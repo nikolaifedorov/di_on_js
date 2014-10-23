@@ -1,0 +1,46 @@
+# Пример обработки данных от пользователя через консоль.
+#
+#  Код в управлении: 
+#   он решает -
+#     когда задать вопрос,
+#     когда прочитать данные от пользователя,
+#     когда обработать данные пользователя.
+
+# process_name - обрабатывает имя от пользователя
+# process_text - обрабатывает текст от пользователя
+
+print("Name:")
+name = gets
+process_name(name)
+
+print("Text:")
+text = gets
+process_text(text)
+
+
+
+#  Пример обработки данных от пользователя через оконную форму.
+#
+#  Поток управления изменился: 
+#    контроль над обработкой данных пользователя изменился,
+#    он передан оконной системе, теперь она решает, когда вызывать методы,
+#    основываясь на связки от меня.
+#
+#  Управление инвертировано - оконная система вызывает меня, а я настраиваю систему.
+
+
+window = new Window()
+
+name_label = new Label("name:")
+name_input = new Input()
+name_input.bind("focusout", function (name) {
+  process_name(name)
+});
+window.add(name_label).add(name_input)
+
+text_label = new Text("Text:")
+text_input = new Input()
+text_input.bind("focusout", function (name) {
+  process_text(text)
+});
+window.add(text_label).add(text_input)
